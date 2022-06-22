@@ -4,37 +4,38 @@ import { ActionType } from '../types'
 import { parseMessage } from '../utils'
 import * as mouse from './mouse'
 import * as draw from './draw'
+import * as screen from './screen'
 
 export const dispatchEvent = (message: WebSocket.RawData, ws: WebSocket) => {
   const action = parseMessage(message)
 
   switch (action.type) {
     case ActionType.MousePosition:
-      mouse.mousePosition(ws)
+      mouse.position(ws)
       break
     case ActionType.MouseUp:
-      mouse.mouseUp(action.payload)
+      mouse.up(action.payload)
       break
     case ActionType.MouseLeft:
-      mouse.mouseLeft(action.payload)
+      mouse.left(action.payload)
       break
     case ActionType.MouseDown:
-      mouse.mouseDown(action.payload)
+      mouse.down(action.payload)
       break
     case ActionType.MouseRight:
-      mouse.mouseRight(action.payload)
+      mouse.right(action.payload)
       break
     case ActionType.DrawRectangle:
-      draw.drawRectangle(action.payload)
+      draw.rectangle(action.payload)
       break
     case ActionType.DrawSquare:
-      draw.drawSquare(action.payload)
+      draw.square(action.payload)
       break
     case ActionType.DrawCircle:
-      draw.drawCircle(action.payload)
+      draw.circle(action.payload)
       break
     case ActionType.PrintScreen:
-      ws.send('prnt_scrn')
+      screen.capture(ws)
       break
     default:
       ws.send('Wrong query')

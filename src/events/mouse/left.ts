@@ -2,9 +2,9 @@ import robot from 'robotjs'
 
 import { Payload } from '../../types'
 
-export const mouseRight = ([shiftX]: Payload) => {
+export const left = ([shiftX]: Payload) => {
   const mousePos = robot.getMousePos()
-  const mouseShiftPosX = mousePos.x + shiftX
+  const mouseShiftPosX = mousePos.x - shiftX
   const mouseShiftPosY = mousePos.y
   robot.moveMouseSmooth(mouseShiftPosX, mouseShiftPosY)
 }

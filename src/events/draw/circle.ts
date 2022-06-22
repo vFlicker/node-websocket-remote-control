@@ -2,7 +2,7 @@ import robot from 'robotjs'
 
 import { Payload } from '../../types'
 
-export const drawCircle = ([radius]: Payload) => {
+export const circle = ([radius]: Payload) => {
   const mousePos = robot.getMousePos()
   const degree = 0.01
 

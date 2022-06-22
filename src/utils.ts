@@ -1,4 +1,5 @@
 import WebSocket from 'ws'
+
 import { ActionType, Actions } from './types'
 
 export const parseMessage = (message: WebSocket.RawData): Actions => {

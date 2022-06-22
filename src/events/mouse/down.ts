@@ -2,7 +2,7 @@ import robot from 'robotjs'
 
 import { Payload } from '../../types'
 
-export const mouseDown = ([shiftY]: Payload) => {
+export const down = ([shiftY]: Payload) => {
   const mousePos = robot.getMousePos()
   const mouseShiftPosX = mousePos.x
   const mouseShiftPosY = mousePos.y + shiftY

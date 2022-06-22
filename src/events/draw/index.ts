@@ -1,3 +1,3 @@
-export { drawCircle } from './draw-circle'
-export { drawRectangle } from './draw-rectangle'
-export { drawSquare } from './draw-square'
+export { circle } from './circle'
+export { rectangle } from './rectangle'
+export { square } from './square'

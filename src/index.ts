@@ -1,7 +1,6 @@
-// import Jimp from 'jimp';
 import WebSocket, { WebSocketServer } from 'ws'
 
-import { dispatchEvent } from './events'
+import { dispatch } from './core/index'
 import { httpServer } from './http-server'
 
 const PORT = 3000
@@ -15,7 +14,7 @@ const onHttpServerConnection = () => {
 const onWebSocketConnection = (ws: WebSocket) => {
   console.log(`Start websocket server on the ${PORT} port!`)
 
-  ws.on('message', (data) => dispatchEvent(data, ws))
+  ws.on('message', (data) => dispatch(data, ws))
   ws.on('error', () => ws.send('Something went wrong'))
   ws.on('close', () => console.log('User disconnected'))
 }

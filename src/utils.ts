@@ -1,6 +1,6 @@
 import WebSocket from 'ws'
 
-import { ActionType, Actions } from './types'
+import { ActionType, Actions } from './core/types'
 
 export const parseMessage = (message: WebSocket.RawData): Actions => {
   const [command, ...coords] = message.toString().split(' ')

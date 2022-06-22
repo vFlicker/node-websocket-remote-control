@@ -1,3 +1,4 @@
+// import Jimp from 'jimp';
 import { WebSocket } from 'ws'
 
 export const capture = (ws: WebSocket) => {

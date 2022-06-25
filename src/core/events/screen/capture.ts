@@ -1,5 +1,4 @@
 import robot from 'robotjs'
-import { WebSocket } from 'ws'
 
 import { base64Image } from './utils'
 
@@ -7,7 +6,7 @@ const WIDTH = 200
 const HEIGHT = 200
 const DUPLICATE_LINE = 'data:image/png;base64,'
 
-export const capture = async (ws: WebSocket) => {
+export const capture = async () => {
   const mouse = robot.getMousePos()
   const x = mouse.x - 100
   const y = mouse.y - 100
@@ -15,7 +14,7 @@ export const capture = async (ws: WebSocket) => {
 
   try {
     const base64 = await base64Image(bitmap.image, WIDTH, HEIGHT)
-    ws.send(`prnt_scrn ${base64.replace(DUPLICATE_LINE, '')}`)
+    return `prnt_scrn ${base64.replace(DUPLICATE_LINE, '')}`
   } catch (err) {
     console.log(err)
   }

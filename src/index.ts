@@ -4,7 +4,7 @@ import { httpServer } from './http-server'
 import { parseMessage, write } from './utils'
 import * as commands from './commands'
 
-const PORT = 8080
+const PORT = 3000
 
 const wss = new WebSocketServer({ server: httpServer })
 

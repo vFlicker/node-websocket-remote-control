@@ -1,3 +1,7 @@
+1. Task: https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/remote-control/assignment.md
+2. Done: 26.06.2022 / deadline 26.06.2022
+3. Score: 164 / 164
+
 ## Installation
 1. Clone/download repo
 2. `npm install`

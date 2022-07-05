@@ -1,5 +1,11 @@
-# RSSchool NodeJS websocket task template
-> Static http server and base task packages.
+## IMPORTANT !!!
+ * WebSocket Server always have the same PORT as the static server.
+
+![2022-06-27_175331](https://user-images.githubusercontent.com/52702091/175970495-488a25af-d0e2-45d7-bf39-86a9317aac61.png)
+
+1. Task: https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/remote-control/assignment.md
+2. Done: 26.06.2022 / deadline 26.06.2022
+3. Score: 164 / 164
 
 ## Installation
 1. Clone/download repo
@@ -10,13 +16,13 @@
 
 `npm run start:dev`
 
-* App served @ `http://localhost:8181` with nodemon
+* App served @ `http://localhost:3000` with nodemon
 
 **Production**
 
 `npm run start`
 
-* App served @ `http://localhost:8181` without nodemon
+* App served @ `http://localhost:3000` without nodemon
 
 ---
 
@@ -24,7 +30,5 @@
 
 Command | Description
 --- | ---
-`npm run dev` | App served @ `http://localhost:8181` with nodemon
-`npm run start` | App served @ `http://localhost:8181` without nodemon
-
-**Note**: replace `npm` with `yarn` in `package.json` if you use yarn.
+`npm run dev` | App served @ `http://localhost:3000` with nodemon
+`npm run start` | App served @ `http://localhost:3000` without nodemon

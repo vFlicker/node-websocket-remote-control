@@ -12,4 +12,4 @@ export {
   up as mouse_up,
 } from './mouse';
 
-export { capture as prnt_scrn } from './screen';
+export { screenshot as prnt_scrn } from './screen';

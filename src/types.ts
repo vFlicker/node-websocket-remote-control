@@ -10,9 +10,9 @@ export enum ActionType {
   PrintScreen = 'prnt_scrn',
 }
 
-export type Payload = number[]
+export type Payload = number[];
 
 export type Actions = {
-  type: ActionType
-  payload: Payload
-}
+  type: ActionType;
+  payload: Payload;
+};

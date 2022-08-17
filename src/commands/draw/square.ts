@@ -1,6 +1,6 @@
-import { Payload } from '../../types'
-import { rectangle } from './rectangle'
+import { Payload } from '../../types';
+import { rectangle } from './rectangle';
 
 export const square = ([width]: Payload) => {
-  rectangle([width, width])
-}
+  rectangle([width, width]);
+};

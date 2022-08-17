@@ -1,4 +1,4 @@
-type flag = 'success' | 'info' | 'error'
+type flag = 'success' | 'info' | 'error';
 
 const enum Colors {
   RED = 31,
@@ -7,22 +7,22 @@ const enum Colors {
 }
 
 const getColoredText = (text: string, color: Colors) => {
-  return `\x1B[${color}m${text}\x1B[0m`
-}
+  return `\x1B[${color}m${text}\x1B[0m`;
+};
 
 export const write = (text: string, flag?: flag) => {
   switch (flag) {
     case 'success':
-      console.log(getColoredText(text, Colors.GREEN))
-      break
+      console.log(getColoredText(text, Colors.GREEN));
+      break;
     case 'info':
-      console.log(getColoredText(text, Colors.BLUE))
-      break
+      console.log(getColoredText(text, Colors.BLUE));
+      break;
     case 'error':
-      console.log(getColoredText(text, Colors.RED))
-      break
+      console.log(getColoredText(text, Colors.RED));
+      break;
     default:
-      console.log(text)
-      break
+      console.log(text);
+      break;
   }
-}
+};

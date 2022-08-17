@@ -2,7 +2,7 @@ export {
   circle as draw_circle,
   rectangle as draw_rectangle,
   square as draw_square,
-} from './draw'
+} from './draw';
 
 export {
   down as mouse_down,
@@ -10,6 +10,6 @@ export {
   position as mouse_position,
   right as mouse_right,
   up as mouse_up,
-} from './mouse'
+} from './mouse';
 
-export { capture as prnt_scrn } from './screen'
+export { capture as prnt_scrn } from './screen';

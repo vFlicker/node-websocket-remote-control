@@ -1,13 +1,12 @@
 import robot from 'robotjs';
 
-import { Payload } from '../../types';
-import * as mouse from '../mouse/index';
+import * as mouse from '../mouse';
 
-export const rectangle = ([width, height]: Payload) => {
+export const rectangle = (width: number, height: number): void => {
   robot.mouseToggle('down');
-  mouse.right([width]);
-  mouse.down([height]);
-  mouse.left([width]);
-  mouse.up([height]);
+  mouse.right(width);
+  mouse.down(height);
+  mouse.left(width);
+  mouse.up(height);
   robot.mouseToggle('up');
 };

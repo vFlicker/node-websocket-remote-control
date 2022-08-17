@@ -1,7 +1,7 @@
 import WebSocket, { createWebSocketStream, WebSocketServer } from 'ws';
 import internal from 'stream';
 
-import * as commands from './commands';
+import { commands } from './commands';
 import { parseMessage, write, WriteFlag } from './utils';
 import { staticServer } from './static-server';
 
@@ -31,7 +31,7 @@ const onMessageHandler = async (
   );
 
   try {
-    const result = await command(payload);
+    const result = await command(...payload);
 
     duplex.write(`${result || type}\0`);
     write(

@@ -1,8 +1,6 @@
 import robot from 'robotjs';
 
-import { Payload } from '../../types';
-
-export const circle = ([radius]: Payload): void => {
+export const circle = (radius: number): void => {
   const mousePos = robot.getMousePos();
 
   robot.moveMouse(mousePos.x + radius, mousePos.y);

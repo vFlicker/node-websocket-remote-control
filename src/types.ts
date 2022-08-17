@@ -10,7 +10,7 @@ export const enum ActionType {
   PrintScreen = 'prnt_scrn',
 }
 
-export type Payload = number[];
+export type Payload = [number, number];
 
 export type Actions = {
   type: ActionType;

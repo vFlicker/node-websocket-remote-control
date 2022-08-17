@@ -1,3 +1,3 @@
-export { circle } from './circle';
-export { rectangle } from './rectangle';
-export { square } from './square';
+export * from './circle';
+export * from './rectangle';
+export * from './square';

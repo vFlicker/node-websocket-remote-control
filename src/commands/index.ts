@@ -1,15 +1,17 @@
-export {
-  circle as draw_circle,
-  rectangle as draw_rectangle,
-  square as draw_square,
-} from './draw';
+import * as draw from './draw';
+import * as mouse from './mouse';
+import * as screen from './screen';
 
-export {
-  down as mouse_down,
-  left as mouse_left,
-  position as mouse_position,
-  right as mouse_right,
-  up as mouse_up,
-} from './mouse';
+export const commands = {
+  draw_circle: draw.circle,
+  draw_rectangle: draw.rectangle,
+  draw_square: draw.square,
 
-export { screenshot as prnt_scrn } from './screen';
+  mouse_down: mouse.down,
+  mouse_left: mouse.left,
+  mouse_position: mouse.position,
+  mouse_right: mouse.right,
+  mouse_up: mouse.up,
+
+  prnt_scrn: screen.screenshot,
+};

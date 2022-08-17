@@ -1,5 +1,5 @@
-export { position } from './position';
-export { down } from './down';
-export { left } from './left';
-export { right } from './right';
-export { up } from './up';
+export * from './down';
+export * from './left';
+export * from './position';
+export * from './right';
+export * from './up';

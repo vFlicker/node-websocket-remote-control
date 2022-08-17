@@ -1,2 +1,2 @@
-export { parseMessage } from './parse-message';
-export { write } from './write';
+export * from './parse-message';
+export * from './write';

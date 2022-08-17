@@ -4,7 +4,6 @@ import { base64Image, calculateMousePosition } from './utils';
 
 const WIDTH = 200;
 const HEIGHT = 200;
-
 const DUPLICATE_LINE = 'data:image/png;base64,';
 
 export const screenshot = async () => {

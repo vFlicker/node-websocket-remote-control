@@ -1,46 +1,48 @@
 import WebSocket, { createWebSocketStream, WebSocketServer } from 'ws';
-
-import { httpServer } from './http-server';
-import { parseMessage, write } from './utils';
-import * as commands from './commands';
 import internal from 'stream';
+
+import * as commands from './commands';
+import { parseMessage, write, WriteFlag } from './utils';
+import { staticServer } from './static-server';
 
 const PORT = 3000;
 
-const wss = new WebSocketServer({ server: httpServer });
+const wss = new WebSocketServer({ server: staticServer });
 
 const onMessageHandler = async (
   chunk: WebSocket.RawData,
   duplex: internal.Duplex,
 ) => {
-  const { type, payload } = parseMessage(chunk);
+  const { type, payload } = parseMessage(chunk.toString());
   const command = commands[type];
 
   if (!command) {
     const answer = `Unknown action: ${type}`;
-    write(answer, 'error');
+    write(answer, WriteFlag.Error);
     duplex.write(`${answer}\0`);
     return;
   }
 
   write(
-    `Received: command ${type} ${
+    `Request: command ${type} ${
       payload.length ? `with payload ${payload}` : ''
     }`,
-    'info',
+    WriteFlag.Info,
   );
 
   try {
     const result = await command(payload);
-    result ? duplex.write(`${result}\0`) : duplex.write(`${type}\0`);
 
+    duplex.write(`${result || type}\0`);
     write(
-      `Command ${type} ${result ? `${result} executed successfully` : ''}`,
-      'success',
+      `Response: command ${type} ${
+        result ? `${result} executed successfully` : ''
+      }`,
+      WriteFlag.Success,
     );
   } catch (err) {
     const answer = `Command ${type} failed with error`;
-    write(answer, 'error');
+    write(answer, WriteFlag.Error);
     duplex.write(`${answer}\0`);
   }
 };
@@ -63,7 +65,7 @@ const onWebSocketConnectionHandler = (ws: WebSocket) => {
   });
 };
 
-httpServer.listen(PORT, () => {
+staticServer.listen(PORT, () => {
   write(`Start static http server on the ${PORT} port!`);
 });
 

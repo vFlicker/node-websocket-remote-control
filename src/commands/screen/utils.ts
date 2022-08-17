@@ -1,16 +1,11 @@
 import Jimp from 'jimp';
 import robot from 'robotjs';
 
-type MousePosition = {
-  x: number;
-  y: number;
-};
-
 export const base64Image = async (
   buffer: Buffer,
   width: number,
   height: number,
-) => {
+): Promise<string> => {
   const jimp = new Jimp(width, height);
   let red: number;
   let green: number;
@@ -39,7 +34,7 @@ export const base64Image = async (
 export const calculateMousePosition = (
   width: number,
   height: number,
-): MousePosition => {
+): { x: number; y: number } => {
   const HALF_WIDTH = width / 2;
   const HALF_HEIGHT = height / 2;
 

@@ -1,4 +1,4 @@
-export enum ActionType {
+export const enum ActionType {
   MousePosition = 'mouse_position',
   MouseUp = 'mouse_up',
   MouseLeft = 'mouse_left',

@@ -1,25 +1,29 @@
-type flag = 'success' | 'info' | 'error';
-
 const enum Colors {
-  RED = 31,
-  GREEN = 32,
-  BLUE = 34,
+  Red = 31,
+  Green = 32,
+  Blue = 34,
 }
 
 const getColoredText = (text: string, color: Colors) => {
   return `\x1B[${color}m${text}\x1B[0m`;
 };
 
-export const write = (text: string, flag?: flag) => {
+export const enum WriteFlag {
+  Success = 'success',
+  Info = 'info',
+  Error = 'error',
+}
+
+export const write = (text: string, flag?: WriteFlag) => {
   switch (flag) {
-    case 'success':
-      console.log(getColoredText(text, Colors.GREEN));
+    case WriteFlag.Success:
+      console.log(getColoredText(text, Colors.Green));
       break;
-    case 'info':
-      console.log(getColoredText(text, Colors.BLUE));
+    case WriteFlag.Info:
+      console.log(getColoredText(text, Colors.Blue));
       break;
-    case 'error':
-      console.log(getColoredText(text, Colors.RED));
+    case WriteFlag.Error:
+      console.log(getColoredText(text, Colors.Red));
       break;
     default:
       console.log(text);

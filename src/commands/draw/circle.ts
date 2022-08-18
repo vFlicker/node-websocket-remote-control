@@ -1,6 +1,6 @@
 import robot from 'robotjs';
 
-export const circle = (radius: number): void => {
+export const circle = (type: string, radius: number): string => {
   const mousePos = robot.getMousePos();
 
   robot.moveMouse(mousePos.x + radius, mousePos.y);
@@ -11,4 +11,6 @@ export const circle = (radius: number): void => {
     robot.dragMouse(x, y);
   }
   robot.mouseToggle('up');
+
+  return `${type} executed successfully`;
 };

@@ -23,25 +23,17 @@ const onMessageHandler = async (
     return;
   }
 
-  write(
-    `Request: command ${type} ${
-      payload.length ? `with payload ${payload}` : ''
-    }`,
-    WriteFlag.Info,
-  );
+  const messagePayload = payload.length ? `with payload ${payload}` : '';
+  write(`Request: command ${type} ${messagePayload}`, WriteFlag.Info);
 
   try {
-    const result = await command(...payload);
+    const result = await command(type, ...payload);
 
     duplex.write(`${result || type}\0`);
-    write(
-      `Response: command ${type} ${
-        result ? `${result} executed successfully` : ''
-      }`,
-      WriteFlag.Success,
-    );
+    write(`Response: command ${result}`, WriteFlag.Success);
   } catch (err) {
     const answer = `Command ${type} failed with error`;
+
     write(answer, WriteFlag.Error);
     duplex.write(`${answer}\0`);
   }

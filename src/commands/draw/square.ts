@@ -1,5 +1,6 @@
 import { rectangle } from './rectangle';
 
-export const square = (width: number): void => {
-  rectangle(width, width);
+export const square = (type: string, width: number): string => {
+  rectangle(type, width, width);
+  return `${type} executed successfully`;
 };

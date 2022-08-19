@@ -1,27 +1,29 @@
 import WebSocket, { createWebSocketStream } from 'ws';
 
-import { write, WriteFlag } from '../../utils/index';
+import { Counter, write, WriteFlag } from '../../utils';
 import { onDuplexData, onDuplexError } from './duplex';
 
-export const onWsServerConnection = (count: number) => (ws: WebSocket) => {
-  const duplex = createWebSocketStream(ws, {
-    encoding: 'utf8',
-    decodeStrings: false,
-  });
+export const onWsServerConnection =
+  (userCounter: Counter) => (ws: WebSocket) => {
+    const duplex = createWebSocketStream(ws, {
+      encoding: 'utf8',
+      decodeStrings: false,
+    });
 
-  count++;
-  write(`New connection, user count: ${count}`, WriteFlag.Info);
+    write(`New connection. User count: ${userCounter.inc()}`, WriteFlag.Info);
 
-  duplex.on('data', onDuplexData(duplex));
+    duplex.on('data', onDuplexData(duplex));
 
-  duplex.on('error', onDuplexError(duplex));
+    duplex.on('error', onDuplexError(duplex));
 
-  ws.on('close', () => {
-    count--;
-    write(`Websocket server closed, user count: ${count}`, WriteFlag.Info);
-    duplex.destroy();
-  });
-};
+    ws.on('close', () => {
+      write(
+        `Websocket server closed. User count: ${userCounter.dec()}`,
+        WriteFlag.Info,
+      );
+      duplex.destroy();
+    });
+  };
 
 export const onWsServerListening = (port: number) => () => {
   write(`Websocket server listening on the ${port} port!`);

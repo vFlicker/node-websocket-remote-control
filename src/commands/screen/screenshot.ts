@@ -10,5 +10,6 @@ export const screenshot = async (type: string): Promise<string> => {
   const { x, y } = calculateMousePosition(WIDTH, HEIGHT);
   const bitmap = robot.screen.capture(x, y, WIDTH, HEIGHT);
   const base64 = await base64Image(bitmap.image, WIDTH, HEIGHT);
+
   return `${type} ${base64.replace(DUPLICATE_LINE, '')}`;
 };

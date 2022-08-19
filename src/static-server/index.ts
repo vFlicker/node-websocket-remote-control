@@ -1,13 +1,13 @@
-import fs from 'fs';
 import path from 'path';
-import http from 'http';
+import { createServer } from 'http';
+import { readFile } from 'fs';
 
-export const staticServer = http.createServer(function (req, res) {
+export const staticServer = createServer(({ url }, res) => {
   const __dirname = path.resolve(path.dirname(''));
-  const file_path =
-    __dirname + (req.url === '/' ? '/front/index.html' : '/front' + req.url);
+  const indexFilePath = url === '/' ? '/front/index.html' : '/front' + url;
+  const filePath = `${__dirname}${indexFilePath}`;
 
-  fs.readFile(file_path, function (err, data) {
+  readFile(filePath, (err, data) => {
     if (err) {
       res.writeHead(404);
       res.end(JSON.stringify(err));

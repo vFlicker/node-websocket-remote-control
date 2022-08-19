@@ -1,11 +1,11 @@
 {
-  "name": "node-websockets-remote-control",
+  "name": "node-websocket-remote-control",
   "version": "1.0.0",
   "author": "Slyusar Vladislav",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "ts-node ./src/index.ts",
+    "start:prod": "ts-node ./src/index.ts",
     "start:dev": "ts-node-dev ./src/index.ts",
     "lint": "eslint \"src/**/*.ts\" --fix"
   },

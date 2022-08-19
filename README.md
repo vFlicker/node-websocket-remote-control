@@ -1,25 +1,42 @@
-## Installation
-1. Clone/download repo
-2. `npm install`
+# WebSocket remote control
 
-## Usage
-**Development**
+## Downloading
 
-`npm run start:dev`
+```
+git clone {repository URL}
+```
 
-* App served @ `http://localhost:3000` with nodemon
+## Installing NPM modules
 
-**Production**
+```
+npm install
+```
 
-`npm run start`
+## Running application (development mode)
 
-* App served @ `http://localhost:3000` without nodemon
+```
+npm run start:dev
+```
 
----
+## Running application (production mode)
 
-**All commands**
+```
+npm run start:prod
+```
 
-Command | Description
---- | ---
-`npm run dev` | App served @ `http://localhost:3000` with nodemon
-`npm run start` | App served @ `http://localhost:3000` without nodemon
+## About application
+
+### Mouse
+
+- Press "Up", "Right", "Down", "Left" to move the mouse cursor in the corresponding direction
+- Press "P" to get the mouse position in px
+
+### Drawing
+
+- Press "C" to draw a circle
+- Press "S" to draw a square
+- Press "R" to draw a rectangular
+
+### Screenshot
+
+- Press "LCtrl" + "P" to take a screenshot

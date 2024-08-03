@@ -4,25 +4,25 @@ const enum Colors {
   Blue = 34,
 }
 
-const getColoredText = (text: string, color: Colors) => {
-  return `\x1B[${color}m${text}\x1B[0m`;
-};
-
-export const enum WriteFlag {
+export const enum PrintFlag {
   Success = 'success',
   Info = 'info',
   Error = 'error',
 }
 
-export const write = (text: string, flag?: WriteFlag) => {
+const getColoredText = (text: string, color: Colors) => {
+  return `\x1B[${color}m${text}\x1B[0m`;
+};
+
+export const print = (text: string, flag?: PrintFlag) => {
   switch (flag) {
-    case WriteFlag.Success:
+    case PrintFlag.Success:
       console.log(getColoredText(text, Colors.Green));
       break;
-    case WriteFlag.Info:
+    case PrintFlag.Info:
       console.log(getColoredText(text, Colors.Blue));
       break;
-    case WriteFlag.Error:
+    case PrintFlag.Error:
       console.log(getColoredText(text, Colors.Red));
       break;
     default:

@@ -1,18 +1,15 @@
-import { staticServer } from './static-server';
-import { createWsServer } from './web-socket-server';
-import { write } from './utils';
+import { createFrontendServer } from './frontend/frontend-server';
+import { createBackendServer } from './backend/backend-server';
 
-const PORT = 3000;
-const WS_PORT = 8080;
+const HOSTNAME = '127.0.0.1';
+const FRONTEND_PORT = 3000;
+const BACKEND_PORT = 8080;
 
-staticServer.listen(PORT, () => {
-  write(`Start static http server on the ${PORT} port!`);
-});
-
-const wsServer = createWsServer(WS_PORT);
+const frontendServer = createFrontendServer(HOSTNAME, FRONTEND_PORT);
+const backendServer = createBackendServer(HOSTNAME, BACKEND_PORT);
 
 process.on('SIGINT', () => {
-  staticServer.close();
-  wsServer.close();
+  frontendServer.close();
+  backendServer.close();
   process.exit();
 });

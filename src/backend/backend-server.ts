@@ -12,17 +12,15 @@ export const createBackendServer = (
 
   wss.on('connection', (socket: WebSocket): void => {
     socket.on('message', async (message: WebSocket.MessageEvent) => {
-      let response: string;
-
       print(`Request: ${message.toString()}`, PrintFlag.Info);
 
       try {
-        response = await handleMessage(message.toString(), commands);
+        const response = await handleMessage(message.toString(), commands);
         socket.send(response);
         print(`Response: ${response}`, PrintFlag.Success);
       } catch (err: any) {
         socket.send(err.message);
-        print(err.message, PrintFlag.Error);
+        print(`Response: ${err.message}`, PrintFlag.Error);
       }
     });
 
